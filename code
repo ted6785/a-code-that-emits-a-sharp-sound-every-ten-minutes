@@ -1,0 +1,23 @@
+function playSharpSound() {
+  // Create an AudioContext instance
+  const AudioContext = window.AudioContext || window.webkitAudioContext;
+  const audioContext = new AudioContext();
+
+  // Create an oscillator node
+  const oscillator = audioContext.createOscillator();
+  oscillator.type = 'sine'; // Set the oscillator type to 'sine' for a sharp sound
+
+  // Connect the oscillator node to the destination (speakers)
+  oscillator.connect(audioContext.destination);
+
+  // Start the oscillator
+  oscillator.start();
+
+  // Stop the oscillator after 1 second
+  setTimeout(function() {
+    oscillator.stop();
+  }, 1000);
+}
+
+// Schedule the sharp sound every ten minutes
+setInterval(playSharpSound, 10 * 60 * 1000);
